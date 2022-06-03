@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Typography, Space } from "antd";
 import ResumeButton from "../components/resume/ResumeButton";
 import resumeStyles from "../styles/resume.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const { Title } = Typography;
@@ -82,7 +82,7 @@ export default function Home() {
             </Space>
             <div className={resumeStyles.resume_divider}>
               <Title level={5} style={{ color: "#515666" }}>
-                模块管理
+                添加模块
               </Title>
             </div>
             <Space direction="vertical" style={{ width: "100%" }}>
