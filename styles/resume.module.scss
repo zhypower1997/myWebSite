@@ -11,27 +11,26 @@
     display: flex;
   }
   &_main{
-    width: 40%;
-    padding: 10px;
-    background: green;
+    width: 41%;
+    padding: 16px;
+    background: #F8F8F8;
     display: flex;
     flex-direction: column;
     justify-content: center;
     &_body {
       height: 95vh;
-      background: rgb(136, 136, 59);
+      background: #fff;
 
     }
   }
   &_operate{
     width: 20%;
     padding: 10px;
-    // background: yellow;
 
   }
   &_edit {
-    width: 400px;
-    background: rebeccapurple;
+    flex:1;
+    background: #fff;
 
   }
 }

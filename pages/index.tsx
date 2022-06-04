@@ -157,8 +157,8 @@ export default function Home(props) {
                   })}
             </Space>
           </div>
-          <div className={resumeStyles.resume_main} ref={exportRef}>
-            <div className={resumeStyles.resume_main_body}>
+          <div className={resumeStyles.resume_main}>
+            <div className={resumeStyles.resume_main_body} ref={exportRef}>
               {Array.isArray(blockDatas) &&
                 blockDatas
                   .filter((item, index) => {
