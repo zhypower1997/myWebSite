@@ -5,6 +5,7 @@ export interface BlockProps {
   rawDatas: RawData[];
 }
 export interface RawData {
+  id: string;
   typeId: string; // 编号（1，2，3，4...）用于查看谁为空
   type: string; // 类型：日期、多选、单选、文件
   name: string;

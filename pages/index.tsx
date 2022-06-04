@@ -4,10 +4,12 @@ import ResumeButton from "../components/resume/ResumeButton";
 import resumeStyles from "../styles/resume.module.scss";
 import { useEffect, useState } from "react";
 import { BlockProps, BlOCKNAME } from "../components/blocks/BlockTypes";
+import BaseEditBlock from "../components/blocks/BaseEditBlock";
+import BaseShowBlock from "../components/blocks/BaseShowBlock";
 
 export default function Home(props) {
   const { BlockDatas } = props;
-  const [blockDatas, setBlockDatas] = useState(
+  const [blockDatas, setBlockDatas] = useState<BlockProps[]>(
     BlockDatas.filter((item) => {
       if (item.isUsed) {
         return item;
@@ -23,6 +25,7 @@ export default function Home(props) {
   const { Title } = Typography;
   const [dragIndex, setDragIndex] = useState(0); // 拖拽下标
   const [dropIndex, setDropIndex] = useState(0); // 放置下标
+  const [currentBlockIndex, setCurrentBlockIndex] = useState(0); // 当前选中的简历项目下标，只能在可拖拽中选，默认为基本信息
 
   const handlerDelete = function (moduleBtnsIndex) {
     // 清空字段的数据
@@ -31,6 +34,21 @@ export default function Home(props) {
         item.isUsed = false;
       }
     });
+    setBlockDatas([...blockDatas]);
+  };
+  const handlerBlockChange = (e, a, f) => {
+    console.log(e.target.value, a, f);
+    blockDatas
+      .find((item) => {
+        if (item.blockId == a) {
+          return item;
+        }
+      })
+      .rawDatas.find((item) => {
+        if (item.id == f) {
+          return item;
+        }
+      }).value = e.target.value;
     setBlockDatas([...blockDatas]);
   };
 
@@ -62,6 +80,11 @@ export default function Home(props) {
                         return (
                           <div
                             key={moduleBtnsIndex}
+                            onClick={() => {
+                              setCurrentBlockIndex(
+                                Number(moduleBtnsItem.blockId)
+                              );
+                            }}
                             onDragOver={(e) => {
                               e.preventDefault();
                               setDropIndex(moduleBtnsIndex + 1);
@@ -140,10 +163,24 @@ export default function Home(props) {
                       return item;
                     }
                   })
-                  .map((item, index) => <div key={index}>{item.blockId}</div>)}
+                  .map((item, index) => (
+                    <div key={index}>
+                      {item.blockId}
+                      <BaseShowBlock rawData={item.rawDatas} />
+                    </div>
+                  ))}
             </div>
           </div>
-          <div className={resumeStyles.resume_edit}></div>
+          <div className={resumeStyles.resume_edit}>
+            <BaseEditBlock
+              handlerBlockChange={handlerBlockChange}
+              BaseEditBlockData={blockDatas.find((item) => {
+                if (Number(item.blockId) == currentBlockIndex) {
+                  return item;
+                }
+              })}
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -172,7 +209,7 @@ let a = async function () {
         rawDatas: [
           {
             id: "1",
-            value: "张三",
+            value: "里斯",
             name: "姓名",
             isRequired: true,
             typeId: "0",
@@ -185,8 +222,15 @@ let a = async function () {
         rawDatas: [
           {
             id: "1",
-            value: "张三",
+            value: "王五",
             name: "姓名",
+            isRequired: true,
+            typeId: "0",
+          },
+          {
+            id: "2",
+            value: "10",
+            name: "年龄",
             isRequired: true,
             typeId: "0",
           },
