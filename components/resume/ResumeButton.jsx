@@ -22,7 +22,6 @@ export default function ResumeButton(props) {
               }}
             >
               <div onClick={onDelete}>Delete</div>
-              <div>aa</div>
             </div>
           )}
         </div>

@@ -1,7 +1,7 @@
 .resume {
   &_divider {
     padding-left: 20px;
-    border-left: 5px solid #515666;
+    border-left: 5px solid #8A9CEE;
     margin: 20px 0;
   }
   &_container {
@@ -20,6 +20,8 @@
     &_body {
       height: 95vh;
       background: #fff;
+      padding: 20px;
+      font-size: 9px;
 
     }
   }
@@ -31,6 +33,7 @@
   &_edit {
     flex:1;
     background: #fff;
+    padding: 40px;
 
   }
 }
