@@ -2,10 +2,11 @@ import Head from "next/head";
 import { Typography, Space } from "antd";
 import ResumeButton from "../components/resume/ResumeButton";
 import resumeStyles from "../styles/resume.module.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { BlockProps, BlOCKNAME } from "../components/blocks/BlockTypes";
 import BaseEditBlock from "../components/blocks/BaseEditBlock";
 import BaseShowBlock from "../components/blocks/BaseShowBlock";
+import exportAsImage from "../lib/exportAsImage";
 
 export default function Home(props) {
   const { BlockDatas } = props;
@@ -26,6 +27,8 @@ export default function Home(props) {
   const [dragIndex, setDragIndex] = useState(0); // 拖拽下标
   const [dropIndex, setDropIndex] = useState(0); // 放置下标
   const [currentBlockIndex, setCurrentBlockIndex] = useState(0); // 当前选中的简历项目下标，只能在可拖拽中选，默认为基本信息
+
+  const exportRef = useRef();
 
   const handlerDelete = function (moduleBtnsIndex) {
     // 清空字段的数据
@@ -154,7 +157,7 @@ export default function Home(props) {
                   })}
             </Space>
           </div>
-          <div className={resumeStyles.resume_main}>
+          <div className={resumeStyles.resume_main} ref={exportRef}>
             <div className={resumeStyles.resume_main_body}>
               {Array.isArray(blockDatas) &&
                 blockDatas
@@ -180,6 +183,9 @@ export default function Home(props) {
                 }
               })}
             />
+            <div onClick={() => exportAsImage(exportRef.current, "MyResume")}>
+              Download
+            </div>
           </div>
         </div>
       </div>
