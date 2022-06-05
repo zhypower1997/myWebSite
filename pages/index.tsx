@@ -159,6 +159,7 @@ export default function Home(props) {
           </div>
           <div className={resumeStyles.resume_main}>
             <div className={resumeStyles.resume_main_body} ref={exportRef}>
+              <div className={resumeStyles.resume_main_body_title}>简历</div>
               {Array.isArray(blockDatas) &&
                 blockDatas
                   .filter((item, index) => {
@@ -168,7 +169,9 @@ export default function Home(props) {
                   })
                   .map((item, index) => (
                     <div key={index}>
-                      {BlOCKNAME[item.blockId]}
+                      <div className={resumeStyles.resume_main_body_subtitle}>
+                        {BlOCKNAME[item.blockId]}
+                      </div>
                       <BaseShowBlock rawData={item.rawDatas} />
                     </div>
                   ))}
