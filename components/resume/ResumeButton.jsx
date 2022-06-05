@@ -1,5 +1,5 @@
 export default function ResumeButton(props) {
-  const { title, isDrag = false, onDelete } = props;
+  const { title, isDrag = false, onDelete, onAdd } = props;
   return (
     <>
       <div
@@ -15,13 +15,17 @@ export default function ResumeButton(props) {
       >
         {title}
         <div>
-          {isDrag && (
+          {isDrag ? (
             <div
               style={{
                 display: "flex",
               }}
             >
               <div onClick={onDelete}>Delete</div>
+            </div>
+          ) : (
+            <div>
+              <div onClick={onAdd}>Add</div>
             </div>
           )}
         </div>

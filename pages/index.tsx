@@ -39,6 +39,15 @@ export default function Home(props) {
     });
     setBlockDatas([...blockDatas]);
   };
+  const handlerAdd = function (moduleBtnsIndex) {
+    // 清空字段的数据
+    blockDatas.forEach((item) => {
+      if (item.blockId == moduleBtnsIndex) {
+        item.isUsed = true;
+      }
+    });
+    setBlockDatas([...blockDatas]);
+  };
   const handlerBlockChange = (e, a, f) => {
     console.log(e.target.value, a, f);
     blockDatas
@@ -147,8 +156,8 @@ export default function Home(props) {
                         <div>
                           <ResumeButton
                             title={BlOCKNAME[moduleBtnsItem.blockId]}
-                            onDelete={() => {
-                              handlerDelete(moduleBtnsItem.blockId);
+                            onAdd={() => {
+                              handlerAdd(moduleBtnsItem.blockId);
                             }}
                           />
                         </div>
