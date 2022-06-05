@@ -21,11 +21,13 @@ export enum BlOCKID {
   "HONOR",
 }
 export const BlOCKNAME = {
-  "0": "基础信息",
+  "0": "基本信息",
   "1": "教育经历",
-  "2": "实习经历",
+  "2": "工作经历",
   "3": "项目经历",
   "4": "荣誉奖项",
+  "5": "自我评价",
+  "6": "技能特长",
 };
 export interface BaseBlockRawData {
   baseName: {

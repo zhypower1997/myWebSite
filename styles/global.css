@@ -25,46 +25,13 @@ img {
   max-width: 100%;
   display: block;
 }
-.radio_type {
-  width: 20px;
-  height: 20px;
-  appearance: none;
-  position: relative;
-}
-.radio_type:before {
-  content: "";
-  width: 20px;
-  height: 20px;
-  border: 1px solid #7d7d7d;
+
+.button-checked {
+  font-size: 14px;
+  padding: 7px 15px;
+  background: #8a9cee;
   display: inline-block;
-  border-radius: 50%;
-  vertical-align: middle;
-}
-.radio_type:checked:before {
-  content: "";
-  width: 20px;
-  height: 20px;
-  border: 1px solid #c59c5a;
-  background: #c59c5a;
-  display: inline-block;
-  border-radius: 50%;
-  vertical-align: middle;
-}
-.radio_type:checked:after {
-  content: "";
-  width: 10px;
-  height: 5px;
-  border: 2px solid white;
-  border-top: transparent;
-  border-right: transparent;
-  text-align: center;
-  display: block;
-  position: absolute;
-  top: 6px;
-  left: 5px;
-  vertical-align: middle;
-  transform: rotate(-45deg);
-}
-.radio_type:checked + label {
-  color: #c59c5a;
+  border-radius: 2px;
+  color: #fff;
+  font-weight: bold;
 }

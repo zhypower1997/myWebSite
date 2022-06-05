@@ -24,7 +24,6 @@ export default function BaseEditBlock(props: {
               />
               <input className={editStyles.edit_radio} type="radio" />
               <input className={editStyles.edit_check} type="checkbox" />
-              <div className={editStyles.edit_button_checked}>DOWNLOAD</div>
             </div>
           );
         })}

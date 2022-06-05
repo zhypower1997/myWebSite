@@ -23,6 +23,7 @@ export default function Home(props) {
       })
     )
   ); // 初始化数据，将使用和未使用分段区分，便于拖拽排序
+
   const { Title } = Typography;
   const [dragIndex, setDragIndex] = useState(0); // 拖拽下标
   const [dropIndex, setDropIndex] = useState(0); // 放置下标
@@ -78,13 +79,19 @@ export default function Home(props) {
               </Title>
             </div>
             <Space direction="vertical" style={{ width: "100%" }}>
-              <ResumeButton title="基本信息" />
+              <div
+                onClick={() => {
+                  setCurrentBlockIndex(0);
+                }}
+              >
+                <ResumeButton title="基本信息" />
+              </div>
               <div>
                 <Space direction="vertical" style={{ width: "100%" }}>
                   {Array.isArray(blockDatas) &&
                     blockDatas
                       .filter((item) => {
-                        if (item.isUsed) {
+                        if (item.isUsed && item.blockId !== "0") {
                           return item;
                         }
                       })
@@ -115,10 +122,10 @@ export default function Home(props) {
                               }}
                               onDragEnd={(e) => {
                                 e.preventDefault();
-                                let temp = blockDatas[dragIndex];
-                                blockDatas[dragIndex] =
-                                  blockDatas[dropIndex - 1];
-                                blockDatas[dropIndex - 1] = temp;
+                                let temp = blockDatas[dragIndex + 1];
+                                blockDatas[dragIndex + 1] =
+                                  blockDatas[dropIndex];
+                                blockDatas[dropIndex] = temp;
                                 setBlockDatas([...blockDatas]);
                                 setDropIndex(0);
                               }}
@@ -155,6 +162,7 @@ export default function Home(props) {
                       <div key={moduleBtnsIndex}>
                         <div>
                           <ResumeButton
+                            isUsed={false}
                             title={BlOCKNAME[moduleBtnsItem.blockId]}
                             onAdd={() => {
                               handlerAdd(moduleBtnsItem.blockId);
@@ -169,10 +177,19 @@ export default function Home(props) {
           <div className={resumeStyles.resume_main}>
             <div className={resumeStyles.resume_main_body} ref={exportRef}>
               <div className={resumeStyles.resume_main_body_title}>简历</div>
+              <BaseShowBlock
+                rawData={
+                  blockDatas.find((item) => {
+                    if (item.blockId == "0") {
+                      return item;
+                    }
+                  }).rawDatas
+                }
+              />
               {Array.isArray(blockDatas) &&
                 blockDatas
-                  .filter((item, index) => {
-                    if (item.isUsed) {
+                  .filter((item) => {
+                    if (item.isUsed && item.blockId !== "0") {
                       return item;
                     }
                   })
@@ -195,8 +212,11 @@ export default function Home(props) {
                 }
               })}
             />
-            <div onClick={() => exportAsImage(exportRef.current, "MyResume")}>
-              Download
+            <div
+              className="button-checked"
+              onClick={() => exportAsImage(exportRef.current, "MyResume")}
+            >
+              DOWNLOAD
             </div>
           </div>
         </div>
@@ -208,6 +228,19 @@ export default function Home(props) {
 let a = async function () {
   return new Promise((res, rej) => {
     res([
+      {
+        blockId: "0",
+        rawDatas: [
+          {
+            id: "1",
+            value: "11",
+            name: "姓名",
+            isRequired: true,
+            typeId: "0",
+          },
+        ],
+        isUsed: true,
+      },
       {
         blockId: "1",
         rawDatas: [
