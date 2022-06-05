@@ -1,0 +1,120 @@
+.edit {
+	font-size: 14px;
+
+	&_input {
+		border: 1px solid #DADADA;
+		border-radius: 2px;
+		padding: 7px 15px;
+		margin-left: 8px;
+		margin-bottom: 8px;
+	}
+
+	&_radio {
+		width: 19px;
+		height: 19px;
+		appearance: none;
+		position: relative;
+		margin-right: 8px;
+
+		&:before {
+			content: "";
+			width: 19px;
+			height: 19px;
+			border: 1px solid #DADADA;
+			display: inline-block;
+			border-radius: 50%;
+			vertical-align: middle;
+		}
+
+		&:checked:before {
+			content: "";
+			width: 19px;
+			height: 19px;
+			background: #fff;
+			border: 1px solid #DADADA;
+			display: inline-block;
+			border-radius: 50%;
+			vertical-align: middle;
+		}
+
+		&:checked:after {
+			content: "";
+			width: 9px;
+			height: 9px;
+			// border: 2px solid white;
+			background: #8A9CEE;
+			border-radius: 50%;
+			border-top: transparent;
+			border-right: transparent;
+			text-align: center;
+			display: block;
+			position: absolute;
+			top: 8px;
+			left: 5px;
+			vertical-align: middle;
+		}
+
+		&:checked+label {
+			color: #c59c5a;
+		}
+	}
+
+	&_check {
+		width: 18px;
+		height: 18px;
+		appearance: none;
+		position: relative;
+		margin-right: 8px;
+
+		&:before {
+			content: "";
+			width: 18px;
+			height: 18px;
+			border: 1px solid #DADADA;
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		&:checked:before {
+			content: "";
+			width: 18px;
+			height: 18px;
+			background: #8A9CEE;
+			border: none;
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		&:checked:after {
+			content: "";
+			width: 10px;
+			height: 5px;
+			border: 2px solid white;
+			border-top: transparent;
+			border-right: transparent;
+			text-align: center;
+			display: block;
+			position: absolute;
+			top: 8px;
+			left: 4px;
+			vertical-align: middle;
+			transform: rotate(-45deg);
+		}
+
+		&:checked+label {
+			color: #8A9CEE;
+		}
+	}
+
+	&_button {
+		&_checked {
+			font-size: 14px;
+			padding: 7px 15px;
+			background: #8A9CEE;
+			display: inline;
+			border-radius: 2px;
+			color: #fff;
+			font-weight: bold;
+		}
+	}
+}

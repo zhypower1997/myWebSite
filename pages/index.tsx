@@ -168,7 +168,7 @@ export default function Home(props) {
                   })
                   .map((item, index) => (
                     <div key={index}>
-                      {item.blockId}
+                      {BlOCKNAME[item.blockId]}
                       <BaseShowBlock rawData={item.rawDatas} />
                     </div>
                   ))}
