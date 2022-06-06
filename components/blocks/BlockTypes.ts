@@ -11,6 +11,7 @@ export interface RawData {
   name: string;
   value: object | number | string | null; // null则为未填
   isRequired: boolean; // 是否必须填写
+  // 如果为多选和单选，写入选项的名称
 }
 // BaseBlockId: 0
 export enum BlOCKID {

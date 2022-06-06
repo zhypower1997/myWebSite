@@ -263,7 +263,7 @@ let a = async function () {
             value: "里斯",
             name: "姓名",
             isRequired: true,
-            typeId: "0",
+            typeId: "2",
           },
         ],
         isUsed: true,
@@ -276,7 +276,7 @@ let a = async function () {
             value: "王五",
             name: "姓名",
             isRequired: true,
-            typeId: "0",
+            typeId: "1",
           },
           {
             id: "2",
