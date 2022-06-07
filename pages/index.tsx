@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { Typography, Space, message } from "antd";
+import { PaperClipOutlined } from "@ant-design/icons";
 import ResumeButton from "../components/resume/ResumeButton";
 import resumeStyles from "../styles/resume.module.scss";
 import { useEffect, useState, useRef } from "react";
@@ -217,12 +218,7 @@ export default function Home(props) {
             </div>
 
             <div className={resumeStyles.resume_edit_btns}>
-              <div
-                style={{
-                  marginRight: "8px",
-                }}
-                className="button-unchecked"
-              >
+              <div className="button-unchecked">
                 <a
                   style={{
                     color: "#8a9cee",
@@ -233,6 +229,10 @@ export default function Home(props) {
                 </a>
               </div>
               <div
+                style={{
+                  marginRight: "8px",
+                  borderLeft: "none",
+                }}
                 className="button-unchecked"
                 onClick={() => {
                   copy(location.href + "resume?userId=" + currentBlockIndex);
@@ -242,7 +242,7 @@ export default function Home(props) {
                   );
                 }}
               >
-                ***
+                <PaperClipOutlined style={{ fontSize: "18px" }} />
               </div>
               <div
                 className="button-checked"
