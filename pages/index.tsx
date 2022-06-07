@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Typography, Space } from "antd";
+import { Typography, Space, message } from "antd";
 import ResumeButton from "../components/resume/ResumeButton";
 import resumeStyles from "../styles/resume.module.scss";
 import { useEffect, useState, useRef } from "react";
@@ -7,6 +7,7 @@ import { BlockProps, BlOCKNAME } from "../components/blocks/BlockTypes";
 import BaseEditBlock from "../components/blocks/BaseEditBlock";
 import BaseShowBlock from "../components/blocks/BaseShowBlock";
 import exportAsImage from "../lib/exportAsImage";
+import copy from "copy-to-clipboard";
 
 export default function Home(props) {
   const { BlockDatas } = props;
@@ -221,21 +222,27 @@ export default function Home(props) {
                   marginRight: "8px",
                 }}
                 className="button-unchecked"
-                onClick={() => exportAsImage(exportRef.current, "MyResume")}
               >
                 <a
                   style={{
                     color: "#8a9cee",
                   }}
-                  onClick={() => {
-                    console.log(
-                      location.href + "resume?userId=" + currentBlockIndex
-                    );
-                  }}
                   href={`/resume?userId=zhypower1997`}
                 >
                   SHARE LINK
                 </a>
+              </div>
+              <div
+                className="button-unchecked"
+                onClick={() => {
+                  copy(location.href + "resume?userId=" + currentBlockIndex);
+                  message.info("地址复制成功，快去分享你的简历吧～");
+                  console.log(
+                    location.href + "resume?userId=" + currentBlockIndex
+                  );
+                }}
+              >
+                ***
               </div>
               <div
                 className="button-checked"
