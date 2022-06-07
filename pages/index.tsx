@@ -204,19 +204,33 @@ export default function Home(props) {
             </div>
           </div>
           <div className={resumeStyles.resume_edit}>
-            <BaseEditBlock
-              handlerBlockChange={handlerBlockChange}
-              BaseEditBlockData={blockDatas.find((item) => {
-                if (Number(item.blockId) == currentBlockIndex) {
-                  return item;
-                }
-              })}
-            />
-            <div
-              className="button-checked"
-              onClick={() => exportAsImage(exportRef.current, "MyResume")}
-            >
-              DOWNLOAD
+            <div>
+              <BaseEditBlock
+                handlerBlockChange={handlerBlockChange}
+                BaseEditBlockData={blockDatas.find((item) => {
+                  if (Number(item.blockId) == currentBlockIndex) {
+                    return item;
+                  }
+                })}
+              />
+            </div>
+
+            <div className={resumeStyles.resume_edit_btns}>
+              <div
+                style={{
+                  marginRight: "8px",
+                }}
+                className="button-unchecked"
+                onClick={() => exportAsImage(exportRef.current, "MyResume")}
+              >
+                <a href={`/resume?userId=zhypower1997`}>SHARE LINK</a>
+              </div>
+              <div
+                className="button-checked"
+                onClick={() => exportAsImage(exportRef.current, "MyResume")}
+              >
+                DOWNLOAD
+              </div>
             </div>
           </div>
         </div>

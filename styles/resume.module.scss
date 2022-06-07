@@ -50,9 +50,15 @@
   }
 
   &_edit {
+    position: relative;
     flex: 1;
     background: #fff;
     padding: 40px;
+    &_btns {
+      position: absolute;
+      bottom: 25px;
+      right: 25px;
+    }
 
   }
 }
