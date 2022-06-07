@@ -223,7 +223,19 @@ export default function Home(props) {
                 className="button-unchecked"
                 onClick={() => exportAsImage(exportRef.current, "MyResume")}
               >
-                <a href={`/resume?userId=zhypower1997`}>SHARE LINK</a>
+                <a
+                  style={{
+                    color: "#8a9cee",
+                  }}
+                  onClick={() => {
+                    console.log(
+                      location.href + "?" + "userId=" + currentBlockIndex
+                    );
+                  }}
+                  href={`/resume?userId=zhypower1997`}
+                >
+                  SHARE LINK
+                </a>
               </div>
               <div
                 className="button-checked"
