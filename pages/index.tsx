@@ -229,7 +229,7 @@ export default function Home(props) {
                   }}
                   onClick={() => {
                     console.log(
-                      location.href + "?" + "userId=" + currentBlockIndex
+                      location.href + "resume?userId=" + currentBlockIndex
                     );
                   }}
                   href={`/resume?userId=zhypower1997`}
