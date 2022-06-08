@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Typography, Space, message } from "antd";
+import { Typography, Space, message, Popconfirm } from "antd";
 import { PaperClipOutlined } from "@ant-design/icons";
 import ResumeButton from "../components/resume/ResumeButton";
 import resumeStyles from "../styles/resume.module.scss";
@@ -66,6 +66,8 @@ export default function Home(props) {
       }).value = e.target.value;
     setBlockDatas([...blockDatas]);
   };
+  // 退出登陆
+  const signOut = () => {};
 
   return (
     <div>
@@ -206,49 +208,70 @@ export default function Home(props) {
             </div>
           </div>
           <div className={resumeStyles.resume_edit}>
-            <div>
-              <BaseEditBlock
-                handlerBlockChange={handlerBlockChange}
-                BaseEditBlockData={blockDatas.find((item) => {
-                  if (Number(item.blockId) == currentBlockIndex) {
-                    return item;
-                  }
-                })}
-              />
+            <div className={resumeStyles.resume_edit_top}>
+              <Popconfirm
+                title={() => (
+                  <div>
+                    <Space>
+                      <span>用户名：{currentBlockIndex}</span>
+                      <span>是否退出登陆</span>
+                    </Space>
+                  </div>
+                )}
+                placement="bottomRight"
+                okText="是"
+                cancelText="否"
+                onConfirm={signOut}
+              >
+                <div className={resumeStyles.resume_edit_avatar}></div>
+              </Popconfirm>
             </div>
+            <div className={resumeStyles.resume_edit_bottom}>
+              <div>{BlOCKNAME[String(currentBlockIndex)]}</div>
+              <div>
+                <BaseEditBlock
+                  handlerBlockChange={handlerBlockChange}
+                  BaseEditBlockData={blockDatas.find((item) => {
+                    if (Number(item.blockId) == currentBlockIndex) {
+                      return item;
+                    }
+                  })}
+                />
+              </div>
 
-            <div className={resumeStyles.resume_edit_btns}>
-              <div className="button-unchecked">
-                <a
+              <div className={resumeStyles.resume_edit_btns}>
+                <div className="button-unchecked">
+                  <a
+                    style={{
+                      color: "#8a9cee",
+                    }}
+                    href={`/resume?userId=zhypower1997`}
+                  >
+                    SHARE LINK
+                  </a>
+                </div>
+                <div
                   style={{
-                    color: "#8a9cee",
+                    marginRight: "8px",
+                    borderLeft: "none",
                   }}
-                  href={`/resume?userId=zhypower1997`}
+                  className="button-unchecked"
+                  onClick={() => {
+                    copy(location.href + "resume?userId=" + currentBlockIndex);
+                    message.info("地址复制成功，快去分享你的简历吧～");
+                    console.log(
+                      location.href + "resume?userId=" + currentBlockIndex
+                    );
+                  }}
                 >
-                  SHARE LINK
-                </a>
-              </div>
-              <div
-                style={{
-                  marginRight: "8px",
-                  borderLeft: "none",
-                }}
-                className="button-unchecked"
-                onClick={() => {
-                  copy(location.href + "resume?userId=" + currentBlockIndex);
-                  message.info("地址复制成功，快去分享你的简历吧～");
-                  console.log(
-                    location.href + "resume?userId=" + currentBlockIndex
-                  );
-                }}
-              >
-                <PaperClipOutlined style={{ fontSize: "18px" }} />
-              </div>
-              <div
-                className="button-checked"
-                onClick={() => exportAsImage(exportRef.current, "MyResume")}
-              >
-                DOWNLOAD
+                  <PaperClipOutlined style={{ fontSize: "18px" }} />
+                </div>
+                <div
+                  className="button-checked"
+                  onClick={() => exportAsImage(exportRef.current, "MyResume")}
+                >
+                  DOWNLOAD
+                </div>
               </div>
             </div>
           </div>
