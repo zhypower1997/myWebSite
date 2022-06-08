@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Typography, Space, message, Popconfirm } from "antd";
-import { CopyOutlined, CopyTwoTone, UserOutlined } from "@ant-design/icons";
+import { CopyOutlined, CopyTwoTone, MehFilled } from "@ant-design/icons";
 import ResumeButton from "../components/resume/ResumeButton";
 import resumeStyles from "../styles/resume.module.scss";
 import { useEffect, useState, useRef } from "react";
@@ -221,7 +221,7 @@ export default function Home(props) {
                 placement="bottomRight"
                 okText="是"
                 cancelText="否"
-                icon={<UserOutlined style={{ color: "#8a9cee" }} />}
+                icon={<MehFilled style={{ color: "#8a9cee" }} />}
                 onConfirm={signOut}
               >
                 <div
