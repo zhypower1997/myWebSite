@@ -45,3 +45,12 @@ img {
   color: #8a9cee;
   font-weight: bold;
 }
+
+button.ant-btn.ant-btn-primary.ant-btn-sm {
+  background: #8a9cee;
+  border-color: #8a9cee;
+}
+button.ant-btn.ant-btn-default.ant-btn-sm:hover {
+  color: #8a9cee;
+  border-color: #8a9cee;
+}

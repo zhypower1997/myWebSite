@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Typography, Space, message, Popconfirm } from "antd";
-import { PaperClipOutlined } from "@ant-design/icons";
+import { CopyOutlined, CopyTwoTone, UserOutlined } from "@ant-design/icons";
 import ResumeButton from "../components/resume/ResumeButton";
 import resumeStyles from "../styles/resume.module.scss";
 import { useEffect, useState, useRef } from "react";
@@ -214,13 +214,14 @@ export default function Home(props) {
                   <div>
                     <Space>
                       <span>用户名：{currentBlockIndex}</span>
-                      <span>是否退出登陆</span>
+                      <span>是否退出登陆？</span>
                     </Space>
                   </div>
                 )}
                 placement="bottomRight"
                 okText="是"
                 cancelText="否"
+                icon={<UserOutlined style={{ color: "#8a9cee" }} />}
                 onConfirm={signOut}
               >
                 <div className={resumeStyles.resume_edit_avatar}></div>
@@ -258,13 +259,25 @@ export default function Home(props) {
                   className="button-unchecked"
                   onClick={() => {
                     copy(location.href + "resume?userId=" + currentBlockIndex);
-                    message.info("地址复制成功，快去分享你的简历吧～");
+                    message.info({
+                      content: "地址复制成功，快去分享你的简历吧～",
+                      icon: (
+                        <span>
+                          <CopyOutlined
+                            style={{ fontSize: "18px", color: "#8a9cee" }}
+                          />
+                        </span>
+                      ),
+                    });
                     console.log(
                       location.href + "resume?userId=" + currentBlockIndex
                     );
                   }}
                 >
-                  <PaperClipOutlined style={{ fontSize: "18px" }} />
+                  <CopyTwoTone
+                    style={{ fontSize: "18px" }}
+                    twoToneColor="#8a9cee"
+                  />
                 </div>
                 <div
                   className="button-checked"
