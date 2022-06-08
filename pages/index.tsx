@@ -224,7 +224,13 @@ export default function Home(props) {
                 icon={<UserOutlined style={{ color: "#8a9cee" }} />}
                 onConfirm={signOut}
               >
-                <div className={resumeStyles.resume_edit_avatar}></div>
+                <div
+                  className={resumeStyles.resume_edit_avatar}
+                  style={{
+                    backgroundImage:
+                      "url(https://pic1.zhimg.com/v2-1c1e177072769ae8fc51faecf905417d_400x224.jpg?source=7e7ef6e2)",
+                  }}
+                ></div>
               </Popconfirm>
             </div>
             <div className={resumeStyles.resume_edit_bottom}>
